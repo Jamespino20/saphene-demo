@@ -34,6 +34,7 @@ jobs:
           npx tsx src/review.ts \
             --claims ../demo/claims/gate-claims.md \
             --repo ../demo \
+            --code-only \
             --ledger ../demo/.saphene/gate.baseline.json | tee ../gate-result.md
 
       - name: Post PR comment
