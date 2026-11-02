@@ -1,0 +1,44 @@
+name: Saphene Evidence Gate
+
+on:
+  pull_request:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: demo
+
+      - uses: actions/checkout@v4
+        with:
+          repository: Jamespino20/Saphene
+          ref: main
+          path: saphene
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Saphene
+        run: npm install --no-audit --no-fund
+        working-directory: saphene
+
+      - name: Verify claims against the demo repository
+        working-directory: saphene
+        run: |
+          npx tsx src/review.ts \
+            --claims ../demo/claims/gate-claims.md \
+            --repo ../demo \
+            --ledger ../demo/.saphene/gate.baseline.json | tee ../gate-result.md
+
+      - name: Post PR comment
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr comment ${{ github.event.number }} --body-file gate-result.md
+        working-directory: saphene

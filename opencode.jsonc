@@ -1,0 +1,9 @@
+﻿{
+  "mcp": {
+    "saphene": {
+      "type": "local",
+      "command": ["npx", "tsx", "D:/Projects/memory-ci/src/mcp.ts"],
+      "enabled": true
+    }
+  }
+}
