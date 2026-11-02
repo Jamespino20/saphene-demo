@@ -8,7 +8,7 @@
 
 - Payment checkout sends a receipt email after every charge.
   category: srs | srsClause: 4.2 | requirementType: functional | priority: recommended
-  evidence: receipt email
+  evidence: receipt email, sendReceiptEmail
 
 - The platform supports GoCardless direct debit.
   category: srs | srsClause: 5.1 | requirementType: interface | priority: recommended

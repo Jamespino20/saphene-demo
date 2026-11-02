@@ -1,0 +1,9 @@
+# Traceability — claims/gate-claims.md
+
+Generated 2026-11-02T14:31:12.272Z
+
+| Claim | SRS clause | Type | Verdict | Citation |
+| ----- | ---------- | ---- | ------- | -------- |
+| clm_4b2e1e96 | 3.1 | operational | matched | src\api\health.ts:1: export function healthCheck() { |
+| clm_153e55b9 | 9.1 | security | matched | src\auth\session.ts:1: // Session tokens are JWTs scoped to a single tenant_id. |
+| clm_549ba1c2 | 6.1 | functional | matched | src\sync\retry.ts:2: export function retrySyncQueue(queue: string[]) { |
